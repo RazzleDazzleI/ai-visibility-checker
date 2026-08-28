@@ -1,0 +1,12 @@
+{
+  "candidates": [{
+    "content": { "parts": [{ "text": "For mobile detailing in Springfield, Lakeside Auto Spa is well regarded, along with Ridgeway Mobile Detail." }] },
+    "groundingMetadata": {
+      "groundingChunks": [
+        { "web": { "uri": "https://www.yelp.com/biz/lakeside-auto-spa", "title": "Yelp" } },
+        { "web": { "uri": "https://lakesideautospa.example/services", "title": "Services" } },
+        { "web": { "uri": "https://www.facebook.com/lakesideautospa", "title": "Facebook" } }
+      ]
+    }
+  }]
+}

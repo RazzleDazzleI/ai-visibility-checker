@@ -54,11 +54,31 @@ That distinction is the difference between a report someone can act on and a num
 ## Running it
 
 ```bash
-cp .env.example .env      # add GEMINI_API_KEY; OPENAI_API_KEY optional
 npm install
-npm run dev               # API on :3001, dashboard on :5173
-npm run check -- --business "Example Co" --niche "plumbing" --city "Omaha, NE"
+cp .env.example .env          # add GEMINI_API_KEY; OPENAI_API_KEY optional
+npm run dev                   # API on :3001, dashboard on :5173
 ```
+
+One-off from the terminal, no dashboard:
+
+```bash
+npm run check -- --business "Lakeside Auto Spa" --niche "mobile detailing" --city "Springfield" --domain lakesideautospa.example
+```
+
+Tests run against recorded provider responses, so they need no keys and burn no quota:
+
+```bash
+npm test        # 13 tests
+```
+
+## API
+
+| Route | |
+|---|---|
+| `GET /api/health` | which providers are enabled |
+| `GET /api/businesses` | every tracked business with run counts |
+| `GET /api/businesses/:id` | latest run per provider, history, citation rollup |
+| `POST /api/check` | run a check and persist it |
 
 ## Stack
 
@@ -66,6 +86,14 @@ npm run check -- --business "Example Co" --niche "plumbing" --city "Omaha, NE"
 **Frontend** React 19 · Vite · TanStack Query · Recharts
 **Testing** Vitest, with recorded provider fixtures so tests don't burn API quota
 
+## A provider error is not a finding
+
+If a provider call fails, the run is stored with its error and **is not scored as
+"not mentioned."** Those are different facts, and collapsing them silently
+corrupts the trend line — the chart would show a visibility drop that was really
+an expired API key. The dashboard renders that state as its own card.
+
 ## Notes
 
-Ships with synthetic fixtures. Real provider calls need your own API keys.
+Ships with synthetic fixtures and a fictional example business. Real provider
+calls need your own API keys.

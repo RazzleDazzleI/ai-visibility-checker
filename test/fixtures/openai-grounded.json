@@ -1,0 +1,13 @@
+{
+  "output": [{
+    "type": "message",
+    "content": [{
+      "type": "output_text",
+      "text": "A few options in Springfield include Ridgeway Mobile Detail and Fairview Auto Care.",
+      "annotations": [
+        { "type": "url_citation", "url": "https://www.angi.com/companylist/us/springfield/detailing.htm" },
+        { "type": "url_citation", "url": "https://www.bbb.org/us/springfield/category/auto-detailing" }
+      ]
+    }]
+  }]
+}

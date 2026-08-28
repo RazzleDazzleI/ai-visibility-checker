@@ -28,3 +28,7 @@ Thumbs.db
 .vscode/
 .idea/
 *.log
+
+# app data
+data/
+dist/
